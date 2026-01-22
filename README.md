@@ -1,4 +1,4 @@
-# ITU Racing - FSAE Signal Analysis Tool
+# ITU Racing - FSAE Analysis Tool
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python">
@@ -19,6 +19,7 @@ A professional signal processing and electronics design application for Formula 
 - **Interactive Plotly plots** with zoom, pan, and hover info
 - **Digital Filtering**: Butterworth, Chebyshev, Bessel filters
 - **Advanced Analysis**: Spectrogram, PSD (Welch), RMS, Peak Detection
+- **Smooth like butter 🧈🧈**
 
 ### Live FSAE EV Calculation Suite
 Real-time engineering dashboard with **zero-latency feedback** (no calculate buttons!):
