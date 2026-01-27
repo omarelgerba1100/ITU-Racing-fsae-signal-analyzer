@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from typing import Tuple, Optional
 
-from ..core.config import COLORS, PLOT_CONFIG
+from core.config import COLORS, PLOT_CONFIG
 
 
 class InteractivePlotter:

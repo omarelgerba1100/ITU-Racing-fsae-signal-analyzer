@@ -8,10 +8,10 @@ import numpy as np
 import tempfile
 import os
 
-from ...core.config import COLORS, APP_CONFIG
-from ...utils.data_loader import DataLoader
-from ...processing.signal_processing import SignalProcessor
-from ...plotting.interactive_plotter import InteractivePlotter
+from core.config import COLORS, APP_CONFIG
+from utils.data_loader import DataLoader
+from processing.signal_processing import SignalProcessor
+from plotting.interactive_plotter import InteractivePlotter
 
 
 class AnalyzeTab:

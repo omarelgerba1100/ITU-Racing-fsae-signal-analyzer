@@ -20,7 +20,7 @@ from typing import Optional
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ...core.config import COLORS
+from core.config import COLORS
 
 
 class CalculatorsTab:

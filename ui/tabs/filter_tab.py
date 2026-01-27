@@ -7,9 +7,9 @@ import numpy as np
 import tempfile
 import webbrowser
 
-from ...core.config import COLORS, FILTER_DEFAULTS
-from ...processing.signal_processing import SignalProcessor
-from ...plotting.interactive_plotter import InteractivePlotter
+from core.config import COLORS, FILTER_DEFAULTS
+from processing.signal_processing import SignalProcessor
+from plotting.interactive_plotter import InteractivePlotter
 
 
 class FilterTab:

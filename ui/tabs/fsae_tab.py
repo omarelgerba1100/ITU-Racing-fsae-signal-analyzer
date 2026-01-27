@@ -4,8 +4,8 @@ FSAE reference guide tab.
 
 import customtkinter as ctk
 
-from ...core.config import COLORS
-from ...core.constants import FSAE_REFERENCE
+from core.config import COLORS
+from core.constants import FSAE_REFERENCE
 
 
 class FSAETab:

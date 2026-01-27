@@ -4,9 +4,9 @@ Equations reference tab with LaTeX rendering.
 
 import customtkinter as ctk
 
-from ...core.config import COLORS
-from ...core.constants import EQUATIONS
-from ...utils.latex_renderer import LatexRenderer
+from core.config import COLORS
+from core.constants import EQUATIONS
+from utils.latex_renderer import LatexRenderer
 
 
 class EquationsTab:

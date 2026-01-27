@@ -8,7 +8,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from PIL import Image
 
-from ..core.config import COLORS
+from core.config import COLORS
 
 
 class LatexRenderer:

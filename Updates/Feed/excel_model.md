@@ -1,0 +1,484 @@
+
+# 01_formulas.txt
+
+
+=== Sheet: Ana Sayfa ===
+
+=== Sheet: Atalet ve Flexural Rigidity ===
+Atalet ve Flexural Rigidity!E2 = =200*1000*D2
+Atalet ve Flexural Rigidity!E3 = =200*1000*D3
+Atalet ve Flexural Rigidity!E4 = =200*1000*D4
+Atalet ve Flexural Rigidity!E5 = =200*1000*D5
+Atalet ve Flexural Rigidity!E6 = =200*1000*D6
+Atalet ve Flexural Rigidity!E7 = =200*1000*D7
+Atalet ve Flexural Rigidity!E8 = =200*1000*D8
+Atalet ve Flexural Rigidity!E9 = =200*1000*D9
+Atalet ve Flexural Rigidity!E10 = =200*1000*D10
+Atalet ve Flexural Rigidity!H12 = =G12/25.4
+Atalet ve Flexural Rigidity!H14 = =G14*25.4
+
+=== Sheet: Sandwich MOI ===
+Sandwich MOI!X20 = =2*((U20*V20^3)/12+U20*V20*((W20+V20)/2)^2)
+
+=== Sheet: Shear Force Calculator ===
+Shear Force Calculator!D23 = =A23*B23*PI()
+Shear Force Calculator!E23 = =D23*C23
+
+=== Sheet: Elastic Modulus of Laminates ===
+
+=== Sheet: Bolt Strength Calculation ===
+Bolt Strength Calculation!E21 = =D21/(B21*C21)
+
+=== Sheet: 3 Point bending for force app ===
+3 Point bending for force app!R11 = =(O11*Q11^3)/(48*P11*N11)
+3 Point bending for force app!R14 = =(O14*Q14*P14)/(N14*4)
+
+=== Sheet: Structural Equivalence ===
+Structural Equivalence!F21 = =(D21*E21)/(C21*B21)
+
+=== Sheet: PT_Dönüş Skidpad ===
+PT_Dönüş Skidpad!G4 = =15.25/2
+PT_Dönüş Skidpad!G5 = =15.25/2+3
+PT_Dönüş Skidpad!G8 = =G4+1.5
+PT_Dönüş Skidpad!G10 = =2*PI()*((G4+G5)/2)
+PT_Dönüş Skidpad!G11 = =2*PI()*G5
+PT_Dönüş Skidpad!G12 = =2*PI()*G4
+
+=== Sheet: PT_Traction Control ===
+PT_Traction Control!C12 = =C11*1000/3600
+PT_Traction Control!C13 = =C12/C7
+PT_Traction Control!C14 = =C13*60/2/PI()
+PT_Traction Control!C15 = =C6/C14
+PT_Traction Control!C16 = =C5*C15
+PT_Traction Control!C20 = =400*9.807
+PT_Traction Control!C22 = =1-C21
+PT_Traction Control!C23 = =C20*C21
+PT_Traction Control!C24 = =C20*C22
+PT_Traction Control!C26 = =C23*C25
+PT_Traction Control!C27 = =C26*C7
+PT_Traction Control!C28 = =C16
+PT_Traction Control!C29 = =C27/C28
+
+=== Sheet: PT_Hız-Aktarım Oranı ===
+PT_Hız-Aktarım Oranı!L2 = =I5/100
+PT_Hız-Aktarım Oranı!P5 = =P3*2*3.14159265359/60
+PT_Hız-Aktarım Oranı!T5 = =T3/T4
+PT_Hız-Aktarım Oranı!P6 = =P5*P4
+PT_Hız-Aktarım Oranı!T6 = =60*T5/(2*3.14159265359)
+PT_Hız-Aktarım Oranı!I8 = =2*3.14159265359*I9/60
+PT_Hız-Aktarım Oranı!I9 = =I3/I6
+PT_Hız-Aktarım Oranı!I10 = =I4*L2/I8
+PT_Hız-Aktarım Oranı!I11 = =I10/I7
+PT_Hız-Aktarım Oranı!I12 = =I8*I7
+PT_Hız-Aktarım Oranı!C14 = =C13*1000/3600
+PT_Hız-Aktarım Oranı!C15 = =C14/C9
+PT_Hız-Aktarım Oranı!C16 = =C15*60/2/PI()
+PT_Hız-Aktarım Oranı!J16 = =I16/(3.6*10^6)
+PT_Hız-Aktarım Oranı!C17 = =C8/C16
+PT_Hız-Aktarım Oranı!C18 = =C7*C17
+PT_Hız-Aktarım Oranı!C22 = =C8/C21
+PT_Hız-Aktarım Oranı!C23 = =C22*2*PI()/60
+PT_Hız-Aktarım Oranı!C24 = =C23*C9
+PT_Hız-Aktarım Oranı!I24 = =1/2*I20*I21*I23*I22^2
+PT_Hız-Aktarım Oranı!C25 = =C24*3.6
+PT_Hız-Aktarım Oranı!C26 = =C7*C21
+
+=== Sheet: PT_Planetary_Gearbox_Calculatio ===
+PT_Planetary_Gearbox_Calculatio!C15 = =(C13/C12+1)
+PT_Planetary_Gearbox_Calculatio!C16 = =C15*C4
+PT_Planetary_Gearbox_Calculatio!C24 = =C20/C19*(C22/C21+1)
+PT_Planetary_Gearbox_Calculatio!C25 = =C4*C24
+PT_Planetary_Gearbox_Calculatio!C34 = =(C29/C28+1)*(C32/C31+1)
+PT_Planetary_Gearbox_Calculatio!C35 = =C4*C34
+PT_Planetary_Gearbox_Calculatio!C42 = =C39/C38*C40/C41+1
+PT_Planetary_Gearbox_Calculatio!C43 = =C42*C4
+
+=== Sheet: PT_Zincir Dişli ===
+PT_Zincir Dişli!C4 = =B4*25.4
+PT_Zincir Dişli!E4 = =C4/PI()
+PT_Zincir Dişli!F4 = =D4*E4
+PT_Zincir Dişli!C5 = =B5*25.4
+PT_Zincir Dişli!E5 = =C5/PI()
+PT_Zincir Dişli!F5 = =D5*E5
+PT_Zincir Dişli!C10 = =B10*25.4
+PT_Zincir Dişli!C11 = =B11*25.4
+PT_Zincir Dişli!E11 = =E10*D10/D11
+PT_Zincir Dişli!F11 = =D11/D10
+PT_Zincir Dişli!F12 = =F11
+PT_Zincir Dişli!C13 = =B13*25.4
+PT_Zincir Dişli!E13 = =E11
+PT_Zincir Dişli!C14 = =B14*25.4
+PT_Zincir Dişli!E14 = =E13*D13/D14
+PT_Zincir Dişli!F14 = =D14/D13
+PT_Zincir Dişli!F15 = =F12*F14
+PT_Zincir Dişli!C16 = =B16*25.4
+PT_Zincir Dişli!E16 = =E14
+PT_Zincir Dişli!C17 = =B17*25.4
+PT_Zincir Dişli!E17 = =E16*D16/D17
+PT_Zincir Dişli!F17 = =D17/D16
+PT_Zincir Dişli!F18 = =F15*F17
+PT_Zincir Dişli!C19 = =B19*25.4
+PT_Zincir Dişli!E19 = =E17
+PT_Zincir Dişli!C20 = =B20*25.4
+PT_Zincir Dişli!E20 = =E19*D19/D20
+PT_Zincir Dişli!F20 = =D20/D19
+PT_Zincir Dişli!F21 = =F18*F20
+PT_Zincir Dişli!C22 = =B22*25.4
+PT_Zincir Dişli!E22 = =E20
+PT_Zincir Dişli!C23 = =B23*25.4
+PT_Zincir Dişli!E23 = =E22*D22/D23
+PT_Zincir Dişli!F23 = =D23/D22
+PT_Zincir Dişli!F24 = =F21*F23
+PT_Zincir Dişli!C25 = =B25*25.4
+PT_Zincir Dişli!E25 = =E23
+PT_Zincir Dişli!C26 = =B26*25.4
+PT_Zincir Dişli!E26 = =E25*D25/D26
+PT_Zincir Dişli!F26 = =D26/D25
+PT_Zincir Dişli!F27 = =F24*F26
+PT_Zincir Dişli!C28 = =B28*25.4
+PT_Zincir Dişli!E28 = =E25
+PT_Zincir Dişli!C29 = =B29*25.4
+PT_Zincir Dişli!E29 = =E28*D28/D29
+PT_Zincir Dişli!F29 = =D29/D28
+PT_Zincir Dişli!F30 = =F27*F29
+PT_Zincir Dişli!C31 = =B31*25.4
+PT_Zincir Dişli!E31 = =E29
+PT_Zincir Dişli!C32 = =B32*25.4
+PT_Zincir Dişli!E32 = =E31*D31/D32
+PT_Zincir Dişli!F32 = =D32/D31
+PT_Zincir Dişli!F33 = =F30*F32
+PT_Zincir Dişli!C34 = =B34*25.4
+PT_Zincir Dişli!E34 = =E32
+PT_Zincir Dişli!C35 = =B35*25.4
+PT_Zincir Dişli!E35 = =E34*D34/D35
+PT_Zincir Dişli!F35 = =D35/D34
+PT_Zincir Dişli!F36 = =F33*F35
+
+=== Sheet: VD_Basic Formüller ===
+
+=== Sheet: Basic Load Transfer - Çökme - A ===
+Basic Load Transfer - Çökme - A!G3 = =((C27*(1-C26))/2)*9.81
+Basic Load Transfer - Çökme - A!J3 = =C7/(C5*C5)
+Basic Load Transfer - Çökme - A!O3 = =G3/J3
+Basic Load Transfer - Çökme - A!G4 = =((C27*(1-C26))/2)*9.81
+Basic Load Transfer - Çökme - A!J4 = =C7/(C5*C5)
+Basic Load Transfer - Çökme - A!O4 = =G5/J5
+Basic Load Transfer - Çökme - A!G5 = =(C27*C26/2)*9.81
+Basic Load Transfer - Çökme - A!J5 = =C8/(C6*C6)
+Basic Load Transfer - Çökme - A!G6 = =(C27*C26/2)*9.81
+Basic Load Transfer - Çökme - A!J6 = =C8/(C6*C6)
+Basic Load Transfer - Çökme - A!G9 = =(C27*9.81*C11*C9/C10)-(C27*9.81*C12*C9/C10)
+Basic Load Transfer - Çökme - A!G12 = =G3-G9/2
+Basic Load Transfer - Çökme - A!O12 = =G12/J3
+Basic Load Transfer - Çökme - A!G13 = =G4-G9/2
+Basic Load Transfer - Çökme - A!O13 = =G14/J5
+Basic Load Transfer - Çökme - A!G14 = =G5+G9/2
+Basic Load Transfer - Çökme - A!G15 = =G6+G9/2
+Basic Load Transfer - Çökme - A!N17 = =O3-O12
+Basic Load Transfer - Çökme - A!N18 = =O4-O13
+Basic Load Transfer - Çökme - A!N21 = =DEGREES(ATAN((O12-O13)/1600))
+Basic Load Transfer - Çökme - A!C22 = =-0.5*C18*C19*C20*C17^2
+Basic Load Transfer - Çökme - A!C23 = =C22/9.81
+Basic Load Transfer - Çökme - A!C26 = =(1600*C4+(1600*ABS(C21-C4)*C23/C3))/1600
+Basic Load Transfer - Çökme - A!C27 = =C3
+
+=== Sheet: Helisel Yay Parametre Hesabı ===
+Helisel Yay Parametre Hesabı!D15 = =D5
+Helisel Yay Parametre Hesabı!D16 = =D6
+Helisel Yay Parametre Hesabı!D17 = =D7
+Helisel Yay Parametre Hesabı!D18 = =D8
+Helisel Yay Parametre Hesabı!D19 = =D9
+Helisel Yay Parametre Hesabı!D20 = =PI()*((D16^2)/4)*D17*PI()*D18*D19/9.81
+Helisel Yay Parametre Hesabı!D21 = =IFERROR(SQRT((D15/D20))/(2*PI()),0)
+
+=== Sheet: Serbest düşüş ===
+
+=== Sheet: Drag ile Yavaşlama ===
+
+=== Sheet: Kılavuz ===
+
+=== Sheet: Kaynak ===
+
+# 02_named_ranges.txt
+
+
+# 03_dependencies.txt
+
+3 Point bending for force app!N11 -> 3 Point bending for force app!R11
+3 Point bending for force app!N14 -> 3 Point bending for force app!R14
+3 Point bending for force app!O11 -> 3 Point bending for force app!R11
+3 Point bending for force app!O14 -> 3 Point bending for force app!R14
+3 Point bending for force app!P11 -> 3 Point bending for force app!R11
+3 Point bending for force app!P14 -> 3 Point bending for force app!R14
+3 Point bending for force app!Q11 -> 3 Point bending for force app!R11
+3 Point bending for force app!Q14 -> 3 Point bending for force app!R14
+Atalet ve Flexural Rigidity!D10 -> Atalet ve Flexural Rigidity!E10
+Atalet ve Flexural Rigidity!D2 -> Atalet ve Flexural Rigidity!E2
+Atalet ve Flexural Rigidity!D3 -> Atalet ve Flexural Rigidity!E3
+Atalet ve Flexural Rigidity!D4 -> Atalet ve Flexural Rigidity!E4
+Atalet ve Flexural Rigidity!D5 -> Atalet ve Flexural Rigidity!E5
+Atalet ve Flexural Rigidity!D6 -> Atalet ve Flexural Rigidity!E6
+Atalet ve Flexural Rigidity!D7 -> Atalet ve Flexural Rigidity!E7
+Atalet ve Flexural Rigidity!D8 -> Atalet ve Flexural Rigidity!E8
+Atalet ve Flexural Rigidity!D9 -> Atalet ve Flexural Rigidity!E9
+Atalet ve Flexural Rigidity!G12 -> Atalet ve Flexural Rigidity!H12
+Atalet ve Flexural Rigidity!G14 -> Atalet ve Flexural Rigidity!H14
+Basic Load Transfer - Çökme - A!C10 -> Basic Load Transfer - Çökme - A!G9
+Basic Load Transfer - Çökme - A!C11 -> Basic Load Transfer - Çökme - A!G9
+Basic Load Transfer - Çökme - A!C12 -> Basic Load Transfer - Çökme - A!G9
+Basic Load Transfer - Çökme - A!C17 -> Basic Load Transfer - Çökme - A!C22
+Basic Load Transfer - Çökme - A!C18 -> Basic Load Transfer - Çökme - A!C22
+Basic Load Transfer - Çökme - A!C19 -> Basic Load Transfer - Çökme - A!C22
+Basic Load Transfer - Çökme - A!C20 -> Basic Load Transfer - Çökme - A!C22
+Basic Load Transfer - Çökme - A!C21 -> Basic Load Transfer - Çökme - A!C26
+Basic Load Transfer - Çökme - A!C22 -> Basic Load Transfer - Çökme - A!C23
+Basic Load Transfer - Çökme - A!C23 -> Basic Load Transfer - Çökme - A!C26
+Basic Load Transfer - Çökme - A!C26 -> Basic Load Transfer - Çökme - A!G3
+Basic Load Transfer - Çökme - A!C26 -> Basic Load Transfer - Çökme - A!G4
+Basic Load Transfer - Çökme - A!C26 -> Basic Load Transfer - Çökme - A!G5
+Basic Load Transfer - Çökme - A!C26 -> Basic Load Transfer - Çökme - A!G6
+Basic Load Transfer - Çökme - A!C27 -> Basic Load Transfer - Çökme - A!G3
+Basic Load Transfer - Çökme - A!C27 -> Basic Load Transfer - Çökme - A!G4
+Basic Load Transfer - Çökme - A!C27 -> Basic Load Transfer - Çökme - A!G5
+Basic Load Transfer - Çökme - A!C27 -> Basic Load Transfer - Çökme - A!G6
+Basic Load Transfer - Çökme - A!C27 -> Basic Load Transfer - Çökme - A!G9
+Basic Load Transfer - Çökme - A!C3 -> Basic Load Transfer - Çökme - A!C26
+Basic Load Transfer - Çökme - A!C3 -> Basic Load Transfer - Çökme - A!C27
+Basic Load Transfer - Çökme - A!C4 -> Basic Load Transfer - Çökme - A!C26
+Basic Load Transfer - Çökme - A!C5 -> Basic Load Transfer - Çökme - A!J3
+Basic Load Transfer - Çökme - A!C5 -> Basic Load Transfer - Çökme - A!J4
+Basic Load Transfer - Çökme - A!C6 -> Basic Load Transfer - Çökme - A!J5
+Basic Load Transfer - Çökme - A!C6 -> Basic Load Transfer - Çökme - A!J6
+Basic Load Transfer - Çökme - A!C7 -> Basic Load Transfer - Çökme - A!J3
+Basic Load Transfer - Çökme - A!C7 -> Basic Load Transfer - Çökme - A!J4
+Basic Load Transfer - Çökme - A!C8 -> Basic Load Transfer - Çökme - A!J5
+Basic Load Transfer - Çökme - A!C8 -> Basic Load Transfer - Çökme - A!J6
+Basic Load Transfer - Çökme - A!C9 -> Basic Load Transfer - Çökme - A!G9
+Basic Load Transfer - Çökme - A!G12 -> Basic Load Transfer - Çökme - A!O12
+Basic Load Transfer - Çökme - A!G14 -> Basic Load Transfer - Çökme - A!O13
+Basic Load Transfer - Çökme - A!G3 -> Basic Load Transfer - Çökme - A!G12
+Basic Load Transfer - Çökme - A!G3 -> Basic Load Transfer - Çökme - A!O3
+Basic Load Transfer - Çökme - A!G4 -> Basic Load Transfer - Çökme - A!G13
+Basic Load Transfer - Çökme - A!G5 -> Basic Load Transfer - Çökme - A!G14
+Basic Load Transfer - Çökme - A!G5 -> Basic Load Transfer - Çökme - A!O4
+Basic Load Transfer - Çökme - A!G6 -> Basic Load Transfer - Çökme - A!G15
+Basic Load Transfer - Çökme - A!G9 -> Basic Load Transfer - Çökme - A!G12
+Basic Load Transfer - Çökme - A!G9 -> Basic Load Transfer - Çökme - A!G13
+Basic Load Transfer - Çökme - A!G9 -> Basic Load Transfer - Çökme - A!G14
+Basic Load Transfer - Çökme - A!G9 -> Basic Load Transfer - Çökme - A!G15
+Basic Load Transfer - Çökme - A!J3 -> Basic Load Transfer - Çökme - A!O12
+Basic Load Transfer - Çökme - A!J3 -> Basic Load Transfer - Çökme - A!O3
+Basic Load Transfer - Çökme - A!J5 -> Basic Load Transfer - Çökme - A!O13
+Basic Load Transfer - Çökme - A!J5 -> Basic Load Transfer - Çökme - A!O4
+Basic Load Transfer - Çökme - A!O12 -> Basic Load Transfer - Çökme - A!N17
+Basic Load Transfer - Çökme - A!O12 -> Basic Load Transfer - Çökme - A!N21
+Basic Load Transfer - Çökme - A!O13 -> Basic Load Transfer - Çökme - A!N18
+Basic Load Transfer - Çökme - A!O13 -> Basic Load Transfer - Çökme - A!N21
+Basic Load Transfer - Çökme - A!O3 -> Basic Load Transfer - Çökme - A!N17
+Basic Load Transfer - Çökme - A!O4 -> Basic Load Transfer - Çökme - A!N18
+Bolt Strength Calculation!B21 -> Bolt Strength Calculation!E21
+Bolt Strength Calculation!C21 -> Bolt Strength Calculation!E21
+Bolt Strength Calculation!D21 -> Bolt Strength Calculation!E21
+Helisel Yay Parametre Hesabı!D15 -> Helisel Yay Parametre Hesabı!D21
+Helisel Yay Parametre Hesabı!D16 -> Helisel Yay Parametre Hesabı!D20
+Helisel Yay Parametre Hesabı!D17 -> Helisel Yay Parametre Hesabı!D20
+Helisel Yay Parametre Hesabı!D18 -> Helisel Yay Parametre Hesabı!D20
+Helisel Yay Parametre Hesabı!D19 -> Helisel Yay Parametre Hesabı!D20
+Helisel Yay Parametre Hesabı!D20 -> Helisel Yay Parametre Hesabı!D21
+Helisel Yay Parametre Hesabı!D5 -> Helisel Yay Parametre Hesabı!D15
+Helisel Yay Parametre Hesabı!D6 -> Helisel Yay Parametre Hesabı!D16
+Helisel Yay Parametre Hesabı!D7 -> Helisel Yay Parametre Hesabı!D17
+Helisel Yay Parametre Hesabı!D8 -> Helisel Yay Parametre Hesabı!D18
+Helisel Yay Parametre Hesabı!D9 -> Helisel Yay Parametre Hesabı!D19
+PT_Dönüş Skidpad!G4 -> PT_Dönüş Skidpad!G10
+PT_Dönüş Skidpad!G4 -> PT_Dönüş Skidpad!G12
+PT_Dönüş Skidpad!G4 -> PT_Dönüş Skidpad!G8
+PT_Dönüş Skidpad!G5 -> PT_Dönüş Skidpad!G10
+PT_Dönüş Skidpad!G5 -> PT_Dönüş Skidpad!G11
+PT_Hız-Aktarım Oranı!C13 -> PT_Hız-Aktarım Oranı!C14
+PT_Hız-Aktarım Oranı!C14 -> PT_Hız-Aktarım Oranı!C15
+PT_Hız-Aktarım Oranı!C15 -> PT_Hız-Aktarım Oranı!C16
+PT_Hız-Aktarım Oranı!C16 -> PT_Hız-Aktarım Oranı!C17
+PT_Hız-Aktarım Oranı!C17 -> PT_Hız-Aktarım Oranı!C18
+PT_Hız-Aktarım Oranı!C21 -> PT_Hız-Aktarım Oranı!C22
+PT_Hız-Aktarım Oranı!C21 -> PT_Hız-Aktarım Oranı!C26
+PT_Hız-Aktarım Oranı!C22 -> PT_Hız-Aktarım Oranı!C23
+PT_Hız-Aktarım Oranı!C23 -> PT_Hız-Aktarım Oranı!C24
+PT_Hız-Aktarım Oranı!C24 -> PT_Hız-Aktarım Oranı!C25
+PT_Hız-Aktarım Oranı!C7 -> PT_Hız-Aktarım Oranı!C18
+PT_Hız-Aktarım Oranı!C7 -> PT_Hız-Aktarım Oranı!C26
+PT_Hız-Aktarım Oranı!C8 -> PT_Hız-Aktarım Oranı!C17
+PT_Hız-Aktarım Oranı!C8 -> PT_Hız-Aktarım Oranı!C22
+PT_Hız-Aktarım Oranı!C9 -> PT_Hız-Aktarım Oranı!C15
+PT_Hız-Aktarım Oranı!C9 -> PT_Hız-Aktarım Oranı!C24
+PT_Hız-Aktarım Oranı!I10 -> PT_Hız-Aktarım Oranı!I11
+PT_Hız-Aktarım Oranı!I16 -> PT_Hız-Aktarım Oranı!J16
+PT_Hız-Aktarım Oranı!I20 -> PT_Hız-Aktarım Oranı!I24
+PT_Hız-Aktarım Oranı!I21 -> PT_Hız-Aktarım Oranı!I24
+PT_Hız-Aktarım Oranı!I22 -> PT_Hız-Aktarım Oranı!I24
+PT_Hız-Aktarım Oranı!I23 -> PT_Hız-Aktarım Oranı!I24
+PT_Hız-Aktarım Oranı!I3 -> PT_Hız-Aktarım Oranı!I9
+PT_Hız-Aktarım Oranı!I4 -> PT_Hız-Aktarım Oranı!I10
+PT_Hız-Aktarım Oranı!I5 -> PT_Hız-Aktarım Oranı!L2
+PT_Hız-Aktarım Oranı!I6 -> PT_Hız-Aktarım Oranı!I9
+PT_Hız-Aktarım Oranı!I7 -> PT_Hız-Aktarım Oranı!I11
+PT_Hız-Aktarım Oranı!I7 -> PT_Hız-Aktarım Oranı!I12
+PT_Hız-Aktarım Oranı!I8 -> PT_Hız-Aktarım Oranı!I10
+PT_Hız-Aktarım Oranı!I8 -> PT_Hız-Aktarım Oranı!I12
+PT_Hız-Aktarım Oranı!I9 -> PT_Hız-Aktarım Oranı!I8
+PT_Hız-Aktarım Oranı!L2 -> PT_Hız-Aktarım Oranı!I10
+PT_Hız-Aktarım Oranı!P3 -> PT_Hız-Aktarım Oranı!P5
+PT_Hız-Aktarım Oranı!P4 -> PT_Hız-Aktarım Oranı!P6
+PT_Hız-Aktarım Oranı!P5 -> PT_Hız-Aktarım Oranı!P6
+PT_Hız-Aktarım Oranı!T3 -> PT_Hız-Aktarım Oranı!T5
+PT_Hız-Aktarım Oranı!T4 -> PT_Hız-Aktarım Oranı!T5
+PT_Hız-Aktarım Oranı!T5 -> PT_Hız-Aktarım Oranı!T6
+PT_Planetary_Gearbox_Calculatio!C12 -> PT_Planetary_Gearbox_Calculatio!C15
+PT_Planetary_Gearbox_Calculatio!C13 -> PT_Planetary_Gearbox_Calculatio!C15
+PT_Planetary_Gearbox_Calculatio!C15 -> PT_Planetary_Gearbox_Calculatio!C16
+PT_Planetary_Gearbox_Calculatio!C19 -> PT_Planetary_Gearbox_Calculatio!C24
+PT_Planetary_Gearbox_Calculatio!C20 -> PT_Planetary_Gearbox_Calculatio!C24
+PT_Planetary_Gearbox_Calculatio!C21 -> PT_Planetary_Gearbox_Calculatio!C24
+PT_Planetary_Gearbox_Calculatio!C22 -> PT_Planetary_Gearbox_Calculatio!C24
+PT_Planetary_Gearbox_Calculatio!C24 -> PT_Planetary_Gearbox_Calculatio!C25
+PT_Planetary_Gearbox_Calculatio!C28 -> PT_Planetary_Gearbox_Calculatio!C34
+PT_Planetary_Gearbox_Calculatio!C29 -> PT_Planetary_Gearbox_Calculatio!C34
+PT_Planetary_Gearbox_Calculatio!C31 -> PT_Planetary_Gearbox_Calculatio!C34
+PT_Planetary_Gearbox_Calculatio!C32 -> PT_Planetary_Gearbox_Calculatio!C34
+PT_Planetary_Gearbox_Calculatio!C34 -> PT_Planetary_Gearbox_Calculatio!C35
+PT_Planetary_Gearbox_Calculatio!C38 -> PT_Planetary_Gearbox_Calculatio!C42
+PT_Planetary_Gearbox_Calculatio!C39 -> PT_Planetary_Gearbox_Calculatio!C42
+PT_Planetary_Gearbox_Calculatio!C4 -> PT_Planetary_Gearbox_Calculatio!C16
+PT_Planetary_Gearbox_Calculatio!C4 -> PT_Planetary_Gearbox_Calculatio!C25
+PT_Planetary_Gearbox_Calculatio!C4 -> PT_Planetary_Gearbox_Calculatio!C35
+PT_Planetary_Gearbox_Calculatio!C4 -> PT_Planetary_Gearbox_Calculatio!C43
+PT_Planetary_Gearbox_Calculatio!C40 -> PT_Planetary_Gearbox_Calculatio!C42
+PT_Planetary_Gearbox_Calculatio!C41 -> PT_Planetary_Gearbox_Calculatio!C42
+PT_Planetary_Gearbox_Calculatio!C42 -> PT_Planetary_Gearbox_Calculatio!C43
+PT_Traction Control!C11 -> PT_Traction Control!C12
+PT_Traction Control!C12 -> PT_Traction Control!C13
+PT_Traction Control!C13 -> PT_Traction Control!C14
+PT_Traction Control!C14 -> PT_Traction Control!C15
+PT_Traction Control!C15 -> PT_Traction Control!C16
+PT_Traction Control!C16 -> PT_Traction Control!C28
+PT_Traction Control!C20 -> PT_Traction Control!C23
+PT_Traction Control!C20 -> PT_Traction Control!C24
+PT_Traction Control!C21 -> PT_Traction Control!C22
+PT_Traction Control!C21 -> PT_Traction Control!C23
+PT_Traction Control!C22 -> PT_Traction Control!C24
+PT_Traction Control!C23 -> PT_Traction Control!C26
+PT_Traction Control!C25 -> PT_Traction Control!C26
+PT_Traction Control!C26 -> PT_Traction Control!C27
+PT_Traction Control!C27 -> PT_Traction Control!C29
+PT_Traction Control!C28 -> PT_Traction Control!C29
+PT_Traction Control!C5 -> PT_Traction Control!C16
+PT_Traction Control!C6 -> PT_Traction Control!C15
+PT_Traction Control!C7 -> PT_Traction Control!C13
+PT_Traction Control!C7 -> PT_Traction Control!C27
+PT_Zincir Dişli!B10 -> PT_Zincir Dişli!C10
+PT_Zincir Dişli!B11 -> PT_Zincir Dişli!C11
+PT_Zincir Dişli!B13 -> PT_Zincir Dişli!C13
+PT_Zincir Dişli!B14 -> PT_Zincir Dişli!C14
+PT_Zincir Dişli!B16 -> PT_Zincir Dişli!C16
+PT_Zincir Dişli!B17 -> PT_Zincir Dişli!C17
+PT_Zincir Dişli!B19 -> PT_Zincir Dişli!C19
+PT_Zincir Dişli!B20 -> PT_Zincir Dişli!C20
+PT_Zincir Dişli!B22 -> PT_Zincir Dişli!C22
+PT_Zincir Dişli!B23 -> PT_Zincir Dişli!C23
+PT_Zincir Dişli!B25 -> PT_Zincir Dişli!C25
+PT_Zincir Dişli!B26 -> PT_Zincir Dişli!C26
+PT_Zincir Dişli!B28 -> PT_Zincir Dişli!C28
+PT_Zincir Dişli!B29 -> PT_Zincir Dişli!C29
+PT_Zincir Dişli!B31 -> PT_Zincir Dişli!C31
+PT_Zincir Dişli!B32 -> PT_Zincir Dişli!C32
+PT_Zincir Dişli!B34 -> PT_Zincir Dişli!C34
+PT_Zincir Dişli!B35 -> PT_Zincir Dişli!C35
+PT_Zincir Dişli!B4 -> PT_Zincir Dişli!C4
+PT_Zincir Dişli!B5 -> PT_Zincir Dişli!C5
+PT_Zincir Dişli!C4 -> PT_Zincir Dişli!E4
+PT_Zincir Dişli!C5 -> PT_Zincir Dişli!E5
+PT_Zincir Dişli!D10 -> PT_Zincir Dişli!E11
+PT_Zincir Dişli!D10 -> PT_Zincir Dişli!F11
+PT_Zincir Dişli!D11 -> PT_Zincir Dişli!E11
+PT_Zincir Dişli!D11 -> PT_Zincir Dişli!F11
+PT_Zincir Dişli!D13 -> PT_Zincir Dişli!E14
+PT_Zincir Dişli!D13 -> PT_Zincir Dişli!F14
+PT_Zincir Dişli!D14 -> PT_Zincir Dişli!E14
+PT_Zincir Dişli!D14 -> PT_Zincir Dişli!F14
+PT_Zincir Dişli!D16 -> PT_Zincir Dişli!E17
+PT_Zincir Dişli!D16 -> PT_Zincir Dişli!F17
+PT_Zincir Dişli!D17 -> PT_Zincir Dişli!E17
+PT_Zincir Dişli!D17 -> PT_Zincir Dişli!F17
+PT_Zincir Dişli!D19 -> PT_Zincir Dişli!E20
+PT_Zincir Dişli!D19 -> PT_Zincir Dişli!F20
+PT_Zincir Dişli!D20 -> PT_Zincir Dişli!E20
+PT_Zincir Dişli!D20 -> PT_Zincir Dişli!F20
+PT_Zincir Dişli!D22 -> PT_Zincir Dişli!E23
+PT_Zincir Dişli!D22 -> PT_Zincir Dişli!F23
+PT_Zincir Dişli!D23 -> PT_Zincir Dişli!E23
+PT_Zincir Dişli!D23 -> PT_Zincir Dişli!F23
+PT_Zincir Dişli!D25 -> PT_Zincir Dişli!E26
+PT_Zincir Dişli!D25 -> PT_Zincir Dişli!F26
+PT_Zincir Dişli!D26 -> PT_Zincir Dişli!E26
+PT_Zincir Dişli!D26 -> PT_Zincir Dişli!F26
+PT_Zincir Dişli!D28 -> PT_Zincir Dişli!E29
+PT_Zincir Dişli!D28 -> PT_Zincir Dişli!F29
+PT_Zincir Dişli!D29 -> PT_Zincir Dişli!E29
+PT_Zincir Dişli!D29 -> PT_Zincir Dişli!F29
+PT_Zincir Dişli!D31 -> PT_Zincir Dişli!E32
+PT_Zincir Dişli!D31 -> PT_Zincir Dişli!F32
+PT_Zincir Dişli!D32 -> PT_Zincir Dişli!E32
+PT_Zincir Dişli!D32 -> PT_Zincir Dişli!F32
+PT_Zincir Dişli!D34 -> PT_Zincir Dişli!E35
+PT_Zincir Dişli!D34 -> PT_Zincir Dişli!F35
+PT_Zincir Dişli!D35 -> PT_Zincir Dişli!E35
+PT_Zincir Dişli!D35 -> PT_Zincir Dişli!F35
+PT_Zincir Dişli!D4 -> PT_Zincir Dişli!F4
+PT_Zincir Dişli!D5 -> PT_Zincir Dişli!F5
+PT_Zincir Dişli!E10 -> PT_Zincir Dişli!E11
+PT_Zincir Dişli!E11 -> PT_Zincir Dişli!E13
+PT_Zincir Dişli!E13 -> PT_Zincir Dişli!E14
+PT_Zincir Dişli!E14 -> PT_Zincir Dişli!E16
+PT_Zincir Dişli!E16 -> PT_Zincir Dişli!E17
+PT_Zincir Dişli!E17 -> PT_Zincir Dişli!E19
+PT_Zincir Dişli!E19 -> PT_Zincir Dişli!E20
+PT_Zincir Dişli!E20 -> PT_Zincir Dişli!E22
+PT_Zincir Dişli!E22 -> PT_Zincir Dişli!E23
+PT_Zincir Dişli!E23 -> PT_Zincir Dişli!E25
+PT_Zincir Dişli!E25 -> PT_Zincir Dişli!E26
+PT_Zincir Dişli!E25 -> PT_Zincir Dişli!E28
+PT_Zincir Dişli!E28 -> PT_Zincir Dişli!E29
+PT_Zincir Dişli!E29 -> PT_Zincir Dişli!E31
+PT_Zincir Dişli!E31 -> PT_Zincir Dişli!E32
+PT_Zincir Dişli!E32 -> PT_Zincir Dişli!E34
+PT_Zincir Dişli!E34 -> PT_Zincir Dişli!E35
+PT_Zincir Dişli!E4 -> PT_Zincir Dişli!F4
+PT_Zincir Dişli!E5 -> PT_Zincir Dişli!F5
+PT_Zincir Dişli!F11 -> PT_Zincir Dişli!F12
+PT_Zincir Dişli!F12 -> PT_Zincir Dişli!F15
+PT_Zincir Dişli!F14 -> PT_Zincir Dişli!F15
+PT_Zincir Dişli!F15 -> PT_Zincir Dişli!F18
+PT_Zincir Dişli!F17 -> PT_Zincir Dişli!F18
+PT_Zincir Dişli!F18 -> PT_Zincir Dişli!F21
+PT_Zincir Dişli!F20 -> PT_Zincir Dişli!F21
+PT_Zincir Dişli!F21 -> PT_Zincir Dişli!F24
+PT_Zincir Dişli!F23 -> PT_Zincir Dişli!F24
+PT_Zincir Dişli!F24 -> PT_Zincir Dişli!F27
+PT_Zincir Dişli!F26 -> PT_Zincir Dişli!F27
+PT_Zincir Dişli!F27 -> PT_Zincir Dişli!F30
+PT_Zincir Dişli!F29 -> PT_Zincir Dişli!F30
+PT_Zincir Dişli!F30 -> PT_Zincir Dişli!F33
+PT_Zincir Dişli!F32 -> PT_Zincir Dişli!F33
+PT_Zincir Dişli!F33 -> PT_Zincir Dişli!F36
+PT_Zincir Dişli!F35 -> PT_Zincir Dişli!F36
+Sandwich MOI!U20 -> Sandwich MOI!X20
+Sandwich MOI!V20 -> Sandwich MOI!X20
+Sandwich MOI!W20 -> Sandwich MOI!X20
+Shear Force Calculator!A23 -> Shear Force Calculator!D23
+Shear Force Calculator!B23 -> Shear Force Calculator!D23
+Shear Force Calculator!C23 -> Shear Force Calculator!E23
+Shear Force Calculator!D23 -> Shear Force Calculator!E23
+Structural Equivalence!B21 -> Structural Equivalence!F21
+Structural Equivalence!C21 -> Structural Equivalence!F21
+Structural Equivalence!D21 -> Structural Equivalence!F21
+Structural Equivalence!E21 -> Structural Equivalence!F21
