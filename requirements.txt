@@ -1,5 +1,5 @@
-# ITU Racing - FSAE Signal Analysis Tool
-# Python Dependencies
+# Advanced Engineering Analysis Tool for Formula Student
+# ITU Racing Team - v1.0.0
 # Install with: pip install -r requirements.txt
 
 # GUI Framework
@@ -14,10 +14,10 @@ pillow>=10.0.0
 # Data Processing
 pandas>=2.0.0
 numpy>=1.24.0
-openpyxl>=3.1.0  # For Excel file support
+openpyxl>=3.1.0
 
 # Signal Processing
 scipy>=1.11.0
 
-# Optional: For better performance on large datasets
-# numba>=0.58.0
+# Math & Equations
+sympy>=1.12.0

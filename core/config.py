@@ -48,7 +48,8 @@ COLORS = {
 # Application configuration - v0.0.3
 APP_CONFIG = {
     'title': "Advanced Engineering Analysis Tool for Formula Student",
-    'subtitle': "ITU Racing | Lead Developer: Omer Rieber",
+    #'subtitle': "ITU Racing Team| Lead Developer: Omer Cirbe",
+    'subtitle': "ITU Racing Team",
     'version': "1.0.0",
     'geometry': "1700x980",
     'default_fs': 2000,  # Default sampling frequency (Hz)

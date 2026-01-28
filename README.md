@@ -1,13 +1,15 @@
-# ITU Racing - FSAE Analysis Tool
+# Advanced Engineering Analysis Tool for Formula Student
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg" alt="Platform">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-  <img src="https://img.shields.io/badge/FSAE-Formula%20Student-red.svg" alt="FSAE">
+  <img src="https://img.shields.io/badge/Version-1.0.0-orange.svg" alt="Version">
 </p>
 
-A professional signal processing and electronics design application for Formula Student teams. Features real-time interactive visualizations, digital filtering, and EV-specific calculators for design validation.
+**ITU Racing Team | Version 1.0.0**
+
+A comprehensive engineering analysis tool designed for Formula Student teams. Features signal processing, mechanical calculations, electronics analysis, and FSAE compliance checking.
 
 ---
 
@@ -19,263 +21,158 @@ A professional signal processing and electronics design application for Formula 
 - **Interactive Plotly plots** with zoom, pan, and hover info
 - **Digital Filtering**: Butterworth, Chebyshev, Bessel filters
 - **Advanced Analysis**: Spectrogram, PSD (Welch), RMS, Peak Detection
-- **Smooth like butter 🧈🧈**
 
-### Live FSAE EV Calculation Suite
-Real-time engineering dashboard with **zero-latency feedback** (no calculate buttons!):
+### Mechanical Engineering Module
+- **Tube Properties**: Moment of inertia, flexural rigidity
+- **FSAE Compliance**: Structural requirement checking per FSAE rules
+- **Sandwich Panels**: Composite panel MOI calculations
+- **Laminate Analysis**: Rule of mixtures for elastic modulus
+- **Fastener Analysis**: Bolt tensile/shear stress
+- **Beam Bending**: 3-point bending stress and deflection
+- **Vehicle Dynamics**: Cornering, lateral load transfer, skidpad
+- **Transmission**: Gear ratios, torque multiplication
 
-| Module | Description |
-|--------|-------------|
-| **A: Pre-Charge/Discharge** | RC safety calculator with FSAE EV.5.5 compliance checking |
-| **B: Battery Endurance** | Runtime & thermal simulation for endurance events |
-| **C: Wheatstone Bridge** | Strain gauge/load cell signal conditioning design |
-| **D: Filter Designer** | RC low-pass filter with Bode plot & noise simulation |
+### Electronics Calculators
+- **Pre-Charge/Discharge**: RC safety with FSAE EV.5.5 compliance
+- **Battery Endurance**: Runtime & thermal simulation
+- **Wheatstone Bridge**: Strain gauge signal conditioning
+- **Filter Designer**: RC low-pass with Bode plot
 
-### Reference Guides
-- Signal processing equations with LaTeX rendering
-- FSAE sensor reference tables
-- Filter selection guide
-- Common quiz questions & answers
-
----
-
-## Quick Start
-
-### Option 1: PowerShell Installer (Windows - Recommended)
-
-```powershell
-# Run this in PowerShell as Administrator
-.\install.ps1
-```
-
-### Option 2: Manual Installation
-
-```powershell
-# 1. Clone the repository
-git clone https://github.com/ITU-Racing/fsae-signal-analyzer.git
-cd fsae-signal-analyzer
-
-# 2. Create virtual environment (recommended)
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Run the application
-python run_analyzer.py
-```
+### Dynamic Formula Engine
+- External formula definitions for easy updates
+- No recompilation needed for calculation changes
+- Excel-style formula syntax support
 
 ---
 
-## Installation Guide (Detailed)
+## Installation
 
 ### Prerequisites
-
 - **Python 3.8 or higher** - [Download Python](https://www.python.org/downloads/)
-- **Git** (optional) - [Download Git](https://git-scm.com/downloads)
 
-### Step-by-Step Installation (Windows PowerShell)
+### Windows (One-Click)
 
-```powershell
-# Step 1: Check Python is installed
-python --version
-# Should show Python 3.8.x or higher
+1. Download or clone this repository
+2. Double-click `install_windows.bat`
+3. Wait for installation to complete
+4. Double-click `run_app.bat` to start the application
 
-# Step 2: Navigate to where you want to install
-cd C:\Users\YourName\Documents
+### macOS / Linux
 
-# Step 3: Clone or download the repository
-git clone https://github.com/ITU-Racing/fsae-signal-analyzer.git
+1. Download or clone this repository
+2. Open terminal in the project folder
+3. Run:
+   ```bash
+   chmod +x install_mac_linux.sh
+   ./install_mac_linux.sh
+   ```
+4. Start the application:
+   ```bash
+   ./run_app.sh
+   ```
 
-# Step 4: Enter the directory
-cd fsae-signal-analyzer
+### Manual Installation
 
-# Step 5: Create a virtual environment
+```bash
+# Clone the repository
+git clone https://github.com/omarelgerba1100/ITU-Racing-fsae-signal-analyzer.git
+cd ITU-Racing-fsae-signal-analyzer
+
+# Create virtual environment (recommended)
 python -m venv venv
 
-# Step 6: Activate the virtual environment
-.\venv\Scripts\Activate.ps1
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
 
-# If you get an execution policy error, run this first:
-# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Step 7: Upgrade pip
-python -m pip install --upgrade pip
-
-# Step 8: Install all dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-# Step 9: Run the application
-python run_analyzer.py
+# Run the application
+python main.py
 ```
-
-### Troubleshooting Installation
-
-| Problem | Solution |
-|---------|----------|
-| `python` not recognized | Add Python to PATH or use `py` instead |
-| Execution policy error | Run `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` |
-| pip install fails | Try `pip install --user -r requirements.txt` |
-| Module not found | Make sure virtual environment is activated |
-| GUI doesn't appear | Install Microsoft Visual C++ Redistributable |
 
 ---
 
-## Usage Guide
-
-### Running the Application
-
-```powershell
-# Make sure you're in the project directory with venv activated
-python run_analyzer.py
-```
+## Usage
 
 ### Tab Overview
 
-#### 1. Load & Analyze
-1. Click **Browse File** to select your data file
-2. Set **Sampling Frequency** (Hz) and **Calibration** (mV/g)
-3. Click **ANALYZE DATA**
-4. Click **Open Interactive Plot in Browser** to view zoomable plots
+| Tab | Description |
+|-----|-------------|
+| Signal Analysis | Load and analyze sensor data with FFT and statistics |
+| Digital Filtering | Apply filters with real-time preview |
+| Advanced Analysis | Spectrogram, PSD, peak detection |
+| Mechanical | 8 engineering calculators for structural analysis |
+| Electronics | EV-specific circuit calculators |
+| Equations | Reference formulas with LaTeX rendering |
+| FSAE Guide | Sensor tables and compliance guidelines |
 
-**Supported File Formats:**
-- `.txt`, `.csv`, `.dat` (auto-detects delimiter and decimal separator)
-- `.xlsx`, `.xls` (Excel files)
-
-#### 2. Digital Filtering
-1. Select filter type: Low-Pass, High-Pass, Band-Pass, or Notch
-2. Choose design: Butterworth, Chebyshev I, or Bessel
-3. Set cutoff frequency and filter order
-4. Click **Apply Filter** to see before/after comparison
-
-#### 3. Advanced Analysis
-- **Spectrogram**: Frequency content over time
-- **PSD (Welch)**: Power spectral density
-- **Statistics**: Mean, RMS, peak-to-peak, crest factor
-- **Peak Detection**: Find dominant frequencies
-- **RMS Analysis**: Vibration severity assessment
-
-#### 4. Calculators (Live - No Calculate Button!)
-
-**Module A: Pre-Charge/Discharge**
-- Drag sliders to adjust bus voltage, resistors
-- Watch charging/discharging curves update in real-time
-- Safety status shows PASS/FAIL for FSAE EV.5.5 compliance
-
-**Module B: Battery Endurance**
-- Enter cell configuration (e.g., 96S4P)
-- Adjust current and simulation time
-- See runtime estimate and thermal analysis
-
-**Module C: Wheatstone Bridge**
-- Design strain gauge signal conditioning
-- Adjust R2 slider to balance the bridge
-- View linearity analysis
-
-**Module D: Filter Designer**
-- Set target cutoff frequency
-- See Bode plot and filtered signal preview
-- Snap to E24 standard component values
-
-#### 5. Equations Reference
-- Key signal processing formulas with explanations
-- RC circuits, filters, FFT, sampling theory
-
-#### 6. FSAE Guide
-- Sensor reference tables
-- Resonance frequency guidelines
-- Filter selection guide
-- Common quiz questions
+### Settings
+Click the **Settings** button to customize:
+- Theme (dark/light/system)
+- Default units (mm/m/in, N/kN/lbf, etc.)
+- Default sampling frequency
 
 ---
 
 ## Project Structure
 
 ```
-fsae_signal_analyzer/
-├── __init__.py              # Package info
-├── main.py                  # Application entry point
+fsae-signal-analyzer/
+├── main.py                 # Application entry point
+├── requirements.txt        # Python dependencies
+├── LICENSE                 # MIT License
+├── install_windows.bat     # Windows installer
+├── run_app.bat             # Windows launcher
+├── install_mac_linux.sh    # macOS/Linux installer
 ├── core/
-│   ├── config.py           # Colors, settings
-│   └── constants.py        # Equations, FSAE reference data
-├── utils/
-│   ├── data_loader.py      # File loading with auto-detection
-│   └── latex_renderer.py   # Equation rendering
-├── plotting/
-│   └── interactive_plotter.py  # Plotly visualizations
-├── processing/
-│   └── signal_processing.py    # FFT, filtering, statistics
+│   ├── config.py          # Configuration and colors
+│   ├── units.py           # Unit conversion engine
+│   └── formula_engine.py  # Dynamic formula parser
+├── ui/
+│   ├── main_window.py     # Main application window
+│   └── tabs/              # Tab implementations
 ├── calculators/
-│   ├── capacitor_calculator.py # RC charging/discharging
-│   ├── battery_calculator.py   # Battery discharge
-│   ├── bridge_calculator.py    # Wheatstone, Wien, Maxwell
-│   └── filter_calculator.py    # RC/RL filter design
-└── ui/
-    ├── main_window.py      # Main application window
-    └── tabs/
-        ├── analyze_tab.py      # Signal analysis
-        ├── filter_tab.py       # Digital filtering
-        ├── advanced_tab.py     # Advanced analysis
-        ├── calculators_tab.py  # Live EV calculators
-        ├── equations_tab.py    # Equations reference
-        └── fsae_tab.py         # FSAE guide
+│   └── mechanical/        # Mechanical calculators
+├── plotting/              # Visualization modules
+├── utils/                 # Utility functions
+├── assets/                # Images and resources
+└── Updates/Feed/          # External formula definitions
 ```
 
 ---
 
-## Dependencies
+## Extending Formulas
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| customtkinter | >=5.0.0 | Modern UI framework |
-| CTkMessagebox | >=2.0 | Message dialogs |
-| plotly | >=5.0.0 | Interactive plots |
-| pandas | >=1.3.0 | Data handling |
-| numpy | >=1.20.0 | Numerical computing |
-| scipy | >=1.7.0 | Signal processing |
-| matplotlib | >=3.4.0 | Equation rendering |
-| pillow | >=8.0.0 | Image processing |
-
----
-
-## For Developers
-
-### Adding New Calculators
-
-1. Create new calculator in `calculators/` folder
-2. Add plotting methods to `plotting/interactive_plotter.py`
-3. Create UI in `ui/tabs/calculators_tab.py`
-4. Use `_create_slider_control()` for real-time updates
-
-### Code Style
-- Follow PEP 8 guidelines
-- Use type hints for function parameters
-- Add docstrings for all public methods
+Add formulas to `Updates/Feed/` directory:
+- `01_formulas.txt` - Formula definitions
+- `02_named_ranges.txt` - Named constants
+- `03_dependencies.txt` - Calculation dependencies
 
 ---
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-calculator`)
-3. Commit your changes (`git commit -am 'Add new calculator'`)
-4. Push to the branch (`git push origin feature/new-calculator`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Submit a pull request
 
 ---
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) file for details.
+MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
-## Team
+## Credits
 
-**ITU Racing Electronics Subteam**
+Developed by **ITU Racing Team**
 
-For questions or issues, contact the electronics team lead or open a GitHub issue.
+Lead Developer: Omer Rieber
 
 ---
 

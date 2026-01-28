@@ -17,6 +17,7 @@ from ui.tabs.equations_tab import EquationsTab
 from ui.tabs.fsae_tab import FSAETab
 from ui.tabs.calculators_tab import CalculatorsTab
 from ui.tabs.mechanical_tab import MechanicalTab
+from ui.tabs.calculator_browser_tab import CalculatorBrowserTab
 
 
 # Get the base directory for assets
@@ -71,6 +72,7 @@ class FSAESignalAnalyzer(ctk.CTk):
         tab_advanced = self.tabview.add("Advanced Analysis")
         tab_mechanical = self.tabview.add("Mechanical")
         tab_calculators = self.tabview.add("Electronics")
+        tab_calc_browser = self.tabview.add("Calculators")
         tab_equations = self.tabview.add("Equations")
         tab_fsae = self.tabview.add("FSAE Guide")
 
@@ -80,6 +82,7 @@ class FSAESignalAnalyzer(ctk.CTk):
         self.advanced_tab = AdvancedTab(tab_advanced, self)
         self.mechanical_tab = MechanicalTab(tab_mechanical, self)
         self.calculators_tab = CalculatorsTab(tab_calculators, self)
+        self.calc_browser_tab = CalculatorBrowserTab(tab_calc_browser, self)
         self.equations_tab = EquationsTab(tab_equations, self)
         self.fsae_tab = FSAETab(tab_fsae, self)
 
@@ -170,12 +173,26 @@ class FSAESignalAnalyzer(ctk.CTk):
         )
         version.pack(pady=(0, 5))
 
-        # === RIGHT: Settings button ===
-        settings_frame = ctk.CTkFrame(header_frame, fg_color="transparent")
-        settings_frame.grid(row=0, column=2, padx=15, pady=15, sticky="e")
+        # === RIGHT: Unit Calculator and Settings buttons ===
+        buttons_frame = ctk.CTkFrame(header_frame, fg_color="transparent")
+        buttons_frame.grid(row=0, column=2, padx=15, pady=15, sticky="e")
+
+        self.units_btn = ctk.CTkButton(
+            buttons_frame,
+            text="Units",
+            command=self.open_unit_calculator,
+            width=80,
+            height=32,
+            fg_color=COLORS['bg_light'],
+            hover_color=COLORS['hover'],
+            border_width=1,
+            border_color=COLORS['border_light'],
+            font=ctk.CTkFont(size=12)
+        )
+        self.units_btn.pack(side="left", padx=(0, 8))
 
         self.settings_btn = ctk.CTkButton(
-            settings_frame,
+            buttons_frame,
             text="Settings",
             command=self.open_settings,
             width=100,
@@ -186,11 +203,16 @@ class FSAESignalAnalyzer(ctk.CTk):
             border_color=COLORS['border_light'],
             font=ctk.CTkFont(size=12)
         )
-        self.settings_btn.pack()
+        self.settings_btn.pack(side="left")
 
     def open_settings(self):
         """Open settings dialog."""
         SettingsDialog(self)
+
+    def open_unit_calculator(self):
+        """Open adaptive unit calculator dialog."""
+        current_tab = self.get_current_tab()
+        UnitCalculatorDialog(self, current_tab)
 
     def get_current_tab(self) -> str:
         """Get the name of the currently active tab."""
@@ -211,6 +233,429 @@ class FSAESignalAnalyzer(ctk.CTk):
     def show_info(self, message: str):
         """Show info message."""
         CTkMessagebox(title="Info", message=message, icon="info")
+
+
+class UnitCalculatorDialog(ctk.CTkToplevel):
+    """Adaptive Unit Calculator dialog - context-aware with measurement system switching."""
+
+    # Define unit categories relevant to each tab
+    TAB_CATEGORIES = {
+        'Signal Analysis': ['FREQUENCY', 'TIME', 'VOLTAGE'],
+        'Digital Filtering': ['FREQUENCY', 'ANGLE', 'TIME'],
+        'Advanced Analysis': ['FREQUENCY', 'POWER', 'TIME'],
+        'Mechanical': ['LENGTH', 'FORCE', 'PRESSURE', 'MOMENT_OF_INERTIA', 'TORQUE', 'MASS'],
+        'Electronics': ['VOLTAGE', 'CURRENT', 'RESISTANCE', 'CAPACITANCE', 'INDUCTANCE', 'POWER'],
+        'Calculators': ['LENGTH', 'FORCE', 'PRESSURE', 'MASS', 'VELOCITY', 'POWER', 'ENERGY', 'TORQUE'],
+        'Equations': ['LENGTH', 'FREQUENCY', 'ANGLE', 'TIME', 'ENERGY', 'POWER'],
+        'FSAE Guide': ['LENGTH', 'FORCE', 'PRESSURE', 'MASS', 'VELOCITY', 'ACCELERATION', 'ANGLE'],
+    }
+
+    def __init__(self, parent, current_tab: str = 'Signal Analysis'):
+        super().__init__(parent)
+        self.parent = parent
+        self.current_tab = current_tab
+
+        self.title("Unit Calculator")
+        self.geometry("500x650")
+        self.configure(fg_color=COLORS['bg_dark'])
+
+        # Make modal
+        self.transient(parent)
+        self.grab_set()
+
+        # Center on parent
+        self.update_idletasks()
+        x = parent.winfo_x() + (parent.winfo_width() - 500) // 2
+        y = parent.winfo_y() + (parent.winfo_height() - 650) // 2
+        self.geometry(f"+{x}+{y}")
+
+        # Import unit converter
+        from core.units import converter, UnitCategory, UNIT_DEFINITIONS, MeasurementSystem
+        self.converter = converter
+        self.unit_definitions = UNIT_DEFINITIONS
+        self.UnitCategory = UnitCategory
+        self.MeasurementSystem = MeasurementSystem
+
+        # Current measurement system
+        self.current_system = MeasurementSystem.METRIC
+
+        self.create_ui()
+
+    def create_ui(self):
+        """Create the unit calculator UI."""
+        # Title with context
+        ctk.CTkLabel(
+            self,
+            text="Unit Calculator",
+            font=ctk.CTkFont(size=18, weight="bold"),
+            text_color=COLORS['text_white']
+        ).pack(pady=(15, 5))
+
+        ctk.CTkLabel(
+            self,
+            text=f"Context: {self.current_tab}",
+            font=ctk.CTkFont(size=11),
+            text_color=COLORS['accent_highlight']
+        ).pack(pady=(0, 10))
+
+        # Main container
+        main_frame = ctk.CTkFrame(self, fg_color=COLORS['bg_medium'], corner_radius=10)
+        main_frame.pack(fill="both", expand=True, padx=15, pady=10)
+
+        # === Measurement System Selector ===
+        system_frame = ctk.CTkFrame(main_frame, fg_color=COLORS['bg_light'], corner_radius=8)
+        system_frame.pack(fill="x", padx=15, pady=(15, 10))
+
+        ctk.CTkLabel(
+            system_frame,
+            text="Measurement System:",
+            font=ctk.CTkFont(size=12, weight="bold"),
+            text_color=COLORS['text_light']
+        ).pack(side="left", padx=15, pady=10)
+
+        self.system_var = ctk.StringVar(value="Metric")
+        self.system_selector = ctk.CTkSegmentedButton(
+            system_frame,
+            values=["Metric", "Imperial", "All"],
+            variable=self.system_var,
+            command=self._on_system_change,
+            font=ctk.CTkFont(size=11)
+        )
+        self.system_selector.pack(side="right", padx=15, pady=10)
+
+        # === Category Selector ===
+        cat_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
+        cat_frame.pack(fill="x", padx=15, pady=5)
+
+        ctk.CTkLabel(
+            cat_frame,
+            text="Category:",
+            font=ctk.CTkFont(size=12),
+            text_color=COLORS['text_light']
+        ).pack(anchor="w")
+
+        # Get relevant categories for current tab
+        relevant_cats = self.TAB_CATEGORIES.get(self.current_tab, ['LENGTH', 'MASS', 'FORCE'])
+        self.category_var = ctk.StringVar(value=relevant_cats[0])
+
+        self.category_combo = ctk.CTkComboBox(
+            cat_frame,
+            values=relevant_cats,
+            variable=self.category_var,
+            width=200,
+            fg_color=COLORS['bg_light'],
+            border_color=COLORS['border_light'],
+            button_color=COLORS['accent_highlight'],
+            dropdown_fg_color=COLORS['bg_medium'],
+            command=self._on_category_change
+        )
+        self.category_combo.pack(fill="x", pady=(5, 10))
+
+        # Input section
+        input_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
+        input_frame.pack(fill="x", padx=15, pady=5)
+
+        ctk.CTkLabel(
+            input_frame,
+            text="Value:",
+            font=ctk.CTkFont(size=12),
+            text_color=COLORS['text_light']
+        ).pack(anchor="w")
+
+        self.value_entry = ctk.CTkEntry(
+            input_frame,
+            width=200,
+            height=35,
+            fg_color=COLORS['bg_light'],
+            border_color=COLORS['border_light'],
+            font=ctk.CTkFont(size=14)
+        )
+        self.value_entry.pack(fill="x", pady=(5, 10))
+        self.value_entry.insert(0, "1.0")
+        self.value_entry.bind("<KeyRelease>", self._on_value_change)
+
+        # From unit
+        ctk.CTkLabel(
+            input_frame,
+            text="From:",
+            font=ctk.CTkFont(size=12),
+            text_color=COLORS['text_light']
+        ).pack(anchor="w")
+
+        self.from_unit_var = ctk.StringVar(value="mm")
+
+        self.from_combo = ctk.CTkComboBox(
+            input_frame,
+            values=["mm"],
+            variable=self.from_unit_var,
+            width=200,
+            fg_color=COLORS['bg_light'],
+            border_color=COLORS['border_light'],
+            button_color=COLORS['accent_highlight'],
+            dropdown_fg_color=COLORS['bg_medium'],
+            command=self._on_from_unit_change
+        )
+        self.from_combo.pack(fill="x", pady=(5, 10))
+
+        # To unit
+        ctk.CTkLabel(
+            input_frame,
+            text="To:",
+            font=ctk.CTkFont(size=12),
+            text_color=COLORS['text_light']
+        ).pack(anchor="w")
+
+        self.to_unit_var = ctk.StringVar(value="m")
+
+        self.to_combo = ctk.CTkComboBox(
+            input_frame,
+            values=["m"],
+            variable=self.to_unit_var,
+            width=200,
+            fg_color=COLORS['bg_light'],
+            border_color=COLORS['border_light'],
+            button_color=COLORS['accent_highlight'],
+            dropdown_fg_color=COLORS['bg_medium'],
+            command=self._on_to_unit_change
+        )
+        self.to_combo.pack(fill="x", pady=(5, 10))
+
+        # Quick system convert button
+        self.quick_convert_btn = ctk.CTkButton(
+            input_frame,
+            text="Quick: Metric <-> Imperial",
+            command=self._quick_system_convert,
+            fg_color=COLORS['bg_light'],
+            hover_color=COLORS['hover'],
+            border_width=1,
+            border_color=COLORS['border_light'],
+            height=30,
+            font=ctk.CTkFont(size=11)
+        )
+        self.quick_convert_btn.pack(fill="x", pady=5)
+
+        # Result section
+        result_frame = ctk.CTkFrame(main_frame, fg_color=COLORS['bg_light'], corner_radius=8)
+        result_frame.pack(fill="x", padx=15, pady=10)
+
+        ctk.CTkLabel(
+            result_frame,
+            text="Result:",
+            font=ctk.CTkFont(size=12),
+            text_color=COLORS['text_gray']
+        ).pack(anchor="w", padx=15, pady=(10, 5))
+
+        self.result_label = ctk.CTkLabel(
+            result_frame,
+            text="1.0",
+            font=ctk.CTkFont(size=22, weight="bold"),
+            text_color=COLORS['accent_highlight']
+        )
+        self.result_label.pack(padx=15, pady=(0, 5))
+
+        self.system_label = ctk.CTkLabel(
+            result_frame,
+            text="",
+            font=ctk.CTkFont(size=10),
+            text_color=COLORS['text_gray']
+        )
+        self.system_label.pack(padx=15, pady=(0, 10))
+
+        # Quick conversions section
+        quick_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
+        quick_frame.pack(fill="x", padx=15, pady=5)
+
+        ctk.CTkLabel(
+            quick_frame,
+            text="Common Conversions:",
+            font=ctk.CTkFont(size=12, weight="bold"),
+            text_color=COLORS['text_light']
+        ).pack(anchor="w", pady=(0, 5))
+
+        self.quick_label = ctk.CTkLabel(
+            quick_frame,
+            text="",
+            font=ctk.CTkFont(size=10),
+            text_color=COLORS['text_gray'],
+            justify="left"
+        )
+        self.quick_label.pack(anchor="w")
+
+        # Close button
+        ctk.CTkButton(
+            self,
+            text="Close",
+            command=self.destroy,
+            fg_color=COLORS['bg_light'],
+            hover_color=COLORS['hover'],
+            width=100
+        ).pack(pady=10)
+
+        # Initialize units for selected category
+        self._update_units_for_category()
+        self._do_conversion()
+
+    def _get_system_enum(self) -> 'MeasurementSystem':
+        """Get the MeasurementSystem enum from the selector."""
+        system_map = {
+            "Metric": self.MeasurementSystem.METRIC,
+            "Imperial": self.MeasurementSystem.IMPERIAL,
+            "All": self.MeasurementSystem.BOTH
+        }
+        return system_map.get(self.system_var.get(), self.MeasurementSystem.METRIC)
+
+    def _get_category_enum(self) -> 'UnitCategory':
+        """Get the UnitCategory enum from the selector."""
+        cat_name = self.category_var.get()
+        return getattr(self.UnitCategory, cat_name, self.UnitCategory.LENGTH)
+
+    def _on_system_change(self, value=None):
+        """Handle measurement system change."""
+        self._update_units_for_category()
+        self._do_conversion()
+
+    def _on_category_change(self, value=None):
+        """Handle category change."""
+        self._update_units_for_category()
+        self._do_conversion()
+
+    def _update_units_for_category(self):
+        """Update unit dropdowns based on selected category and system."""
+        category = self._get_category_enum()
+        system = self._get_system_enum()
+
+        # Get units for this category and system
+        units = self.converter.get_units_by_category_and_system(category, system)
+        unit_list = list(units.keys())
+
+        if not unit_list:
+            unit_list = ["N/A"]
+
+        # Update from combo
+        self.from_combo.configure(values=unit_list)
+        if self.from_unit_var.get() not in unit_list:
+            self.from_unit_var.set(unit_list[0])
+
+        # Update to combo
+        self.to_combo.configure(values=unit_list)
+        if self.to_unit_var.get() not in unit_list:
+            self.to_unit_var.set(unit_list[1] if len(unit_list) > 1 else unit_list[0])
+
+        self._update_quick_reference()
+
+    def _on_value_change(self, event=None):
+        """Handle value change."""
+        self._do_conversion()
+
+    def _on_from_unit_change(self, value=None):
+        """Handle from-unit change."""
+        self._do_conversion()
+        self._update_quick_reference()
+
+    def _on_to_unit_change(self, value=None):
+        """Handle to-unit change."""
+        self._do_conversion()
+
+    def _quick_system_convert(self):
+        """Quick convert between Metric and Imperial."""
+        from_unit = self.from_unit_var.get()
+        if from_unit not in self.unit_definitions:
+            return
+
+        from_def = self.unit_definitions[from_unit]
+        current_sys = from_def.system
+
+        # Determine target system
+        if current_sys == self.MeasurementSystem.METRIC or current_sys == self.MeasurementSystem.SI:
+            target_sys = self.MeasurementSystem.IMPERIAL
+        else:
+            target_sys = self.MeasurementSystem.METRIC
+
+        # Find equivalent unit
+        equiv = self.converter.get_equivalent_unit(from_unit, target_sys)
+        if equiv and equiv != from_unit:
+            self.to_unit_var.set(equiv)
+            self._do_conversion()
+
+    def _do_conversion(self):
+        """Perform the conversion."""
+        try:
+            value = float(self.value_entry.get())
+            from_unit = self.from_unit_var.get()
+            to_unit = self.to_unit_var.get()
+
+            if from_unit == "N/A" or to_unit == "N/A":
+                self.result_label.configure(text="Select valid units")
+                return
+
+            result = self.converter.convert(value, from_unit, to_unit)
+
+            # Format result
+            if abs(result) >= 10000 or (abs(result) < 0.001 and result != 0):
+                result_str = f"{result:.4e} {to_unit}"
+            else:
+                result_str = f"{result:.6g} {to_unit}"
+
+            self.result_label.configure(text=result_str)
+
+            # Show system info
+            from_sys = self.unit_definitions[from_unit].system.value
+            to_sys = self.unit_definitions[to_unit].system.value
+            if from_sys != to_sys:
+                self.system_label.configure(text=f"({from_sys} -> {to_sys})")
+            else:
+                self.system_label.configure(text=f"(within {from_sys})")
+
+        except ValueError as e:
+            self.result_label.configure(text=str(e))
+            self.system_label.configure(text="")
+        except Exception:
+            self.result_label.configure(text="Invalid input")
+            self.system_label.configure(text="")
+
+    def _update_quick_reference(self):
+        """Update quick reference with common conversions."""
+        from_unit = self.from_unit_var.get()
+        if from_unit not in self.unit_definitions:
+            self.quick_label.configure(text="")
+            return
+
+        from_def = self.unit_definitions[from_unit]
+        category = from_def.category
+
+        # Show conversions to both metric and imperial
+        refs = []
+
+        # Get metric equivalent
+        metric_equiv = self.converter.get_equivalent_unit(from_unit, self.MeasurementSystem.METRIC)
+        if metric_equiv and metric_equiv != from_unit:
+            try:
+                val = self.converter.convert(1.0, from_unit, metric_equiv)
+                refs.append(f"1 {from_unit} = {val:.4g} {metric_equiv} (metric)")
+            except Exception:
+                pass
+
+        # Get imperial equivalent
+        imperial_equiv = self.converter.get_equivalent_unit(from_unit, self.MeasurementSystem.IMPERIAL)
+        if imperial_equiv and imperial_equiv != from_unit:
+            try:
+                val = self.converter.convert(1.0, from_unit, imperial_equiv)
+                refs.append(f"1 {from_unit} = {val:.4g} {imperial_equiv} (imperial)")
+            except Exception:
+                pass
+
+        # Add a few more from same category
+        all_units = self.converter.get_units_by_category(category)
+        for unit in list(all_units.keys())[:4]:
+            if unit != from_unit and len(refs) < 5:
+                try:
+                    val = self.converter.convert(1.0, from_unit, unit)
+                    if f"{unit}" not in str(refs):
+                        refs.append(f"1 {from_unit} = {val:.4g} {unit}")
+                except Exception:
+                    pass
+
+        self.quick_label.configure(text="\n".join(refs[:5]))
 
 
 class SettingsDialog(ctk.CTkToplevel):
